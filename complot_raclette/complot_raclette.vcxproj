@@ -125,11 +125,14 @@
   <ItemGroup>
     <ClInclude Include="complot_raclette.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="fromage.hpp" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="complot_raclette.cpp" />
+    <ClCompile Include="fromage.cpp" />
+    <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="complot_raclette.rc" />
