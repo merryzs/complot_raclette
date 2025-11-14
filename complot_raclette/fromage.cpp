@@ -18,14 +18,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         // Charger l'image ici pour être sûr que le chemin est bon
         hBitmap = (HBITMAP)LoadImageW(
             NULL,
-            L"repos/complot_raclette/asset/raclette.bmp",
+            L"complot_raclette/asset/raclette.bmp",
             IMAGE_BITMAP,
             0, 0,
             LR_LOADFROMFILE
         );
 
         if (!hBitmap)
-            MessageBox(hwnd, _T("Impossible de charger raclette.bmp"), _T("Erreur"), MB_OK);
+            MessageBox(hwnd, _T("Impossible de charger raclette.bmp"), _T("img de mrd"), MB_OK);
 
         break; // ← IMPORTANT !!!
 
