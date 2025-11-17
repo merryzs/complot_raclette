@@ -35,7 +35,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         );
 
         if (!hBitmap)
-            MessageBox(hwnd, _T("Impossible de charger raclette.bmp"), _T("img de mrd"), MB_OK);
+            MessageBox(hwnd, _T("Impossible de charger raclette.bmp"), _T("img de mrd,"), MB_OK);
 
 
         // Créer les contrôles (Niveau 4)
