@@ -14,7 +14,7 @@ HWND hButton = NULL;
 HMENU Mebar;
 HMENU MeFile;
 HMENU MeHelp;
-
+HBITMAP hbit;
 
 
 // Fonction pour charger un BMP en mémoire avec CreateDIBSection
@@ -32,13 +32,7 @@ bool LoadBitmapDIBSection(const wchar_t* filename, HDC hdc)
 
     bih.bmiHeader = bmih;
 
-    // Créer DIBSection
-    hBitmap = CreateDIBSection(hdc, &bih, DIB_RGB_COLORS, (void**)&pBits, NULL, 0);
-    if (!hBitmap)
-    {
-        CloseHandle(hFile);
-        return false;
-    }
+   
 
     // Lire les pixels
     SetFilePointer(hFile, bfh.bfOffBits, NULL, FILE_BEGIN);
@@ -55,12 +49,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
     case WM_CREATE:
     {
         HDC hdc = GetDC(hwnd);
-
-        // Charger l'image
-        if (!LoadBitmapDIBSection(L"complot_raclette\\asset\\raclette.bmp", hdc))
-        {
-            MessageBoxW(hwnd, L"Impossible de charger raclette.bmp", L"Erreur", MB_OK | MB_ICONERROR);
-        }
+        hbit = (HBITMAP)LoadImageW(
+            NULL,
+            L"C:/Users/cdidier/source/repos/complot_raclette/complot_raclette/asset/imaget.bmp",  // <-- Remarquez le L devant la chaîne
+            IMAGE_BITMAP,
+            0, 0,
+            LR_LOADFROMFILE
+        );
 
         ReleaseDC(hwnd, hdc);
 
@@ -162,22 +157,18 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hwnd, &ps);
 
-        if (hBitmap && pBits)
-        {
-            // Affichage redimensionné
-            StretchDIBits(
-                hdc,
-                0, 0, g_width, g_height,     // destination
-                0, 0, bih.bmiHeader.biWidth, bih.bmiHeader.biHeight, // source
-                pBits,
-                &bih,
-                DIB_RGB_COLORS,
-                SRCCOPY
-            );
-        }
+        HDC hdcMem = CreateCompatibleDC(hdc);
+        HBITMAP oldBitmap = (HBITMAP)SelectObject(hdcMem, hBitmap);
+
+        BITMAP bmp;
+        GetObject(hBitmap, sizeof(BITMAP), &bmp);
+
+        BitBlt(hdc, 0, 0, bmp.bmWidth, bmp.bmHeight, hdcMem, 0, 0, SRCCOPY);
+
+        SelectObject(hdcMem, oldBitmap);
+        DeleteDC(hdcMem);
 
         EndPaint(hwnd, &ps);
-        return 0;
     }
 
     case WM_DESTROY:
