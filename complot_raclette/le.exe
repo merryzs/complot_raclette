@@ -1,0 +1,34 @@
+﻿'complot_raclette.exe' (Win32) : Chargé 'C:\Users\cdidier\source\repos\complot_raclette\x64\Debug\complot_raclette.exe'. Les symboles ont été chargés.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\ntdll.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\kernel32.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\KernelBase.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\user32.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\win32u.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\gdi32.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\gdi32full.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\msvcp_win.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\ucrtbase.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\vcruntime140d.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\ucrtbased.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\imm32.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\uxtheme.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\combase.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\rpcrt4.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\msctf.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\msvcrt.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\TextShaping.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\kernel.appcore.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\bcryptprimitives.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\sechost.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\bcrypt.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\TextInputFramework.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\oleaut32.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\CoreMessaging.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\CoreUIComponents.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\WinTypes.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\advapi32.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+'complot_raclette.exe' (Win32) : Chargé 'C:\Windows\System32\cryptbase.dll'. Chargement des symboles désactivé par le paramètre Include/Exclude.
+Le thread 24108 s'est arrêté avec le code 0 (0x0).
+Le thread 23292 s'est arrêté avec le code 0 (0x0).
+Le thread 11272 s'est arrêté avec le code 0 (0x0).
+Le programme '[18660] complot_raclette.exe' s'est arrêté avec le code 0 (0x0).
