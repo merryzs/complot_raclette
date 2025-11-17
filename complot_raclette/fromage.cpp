@@ -51,63 +51,19 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         HDC hdc = GetDC(hwnd);
         hbit = (HBITMAP)LoadImageW(
             NULL,
-            L"C:/Users/cdidier/source/repos/complot_raclette/complot_raclette/asset/imaget.bmp",  // <-- Remarquez le L devant la chaîne
+
+            L"complot_raclette/asset/raclette.bmp",
+
             IMAGE_BITMAP,
             0, 0,
             LR_LOADFROMFILE
         );
 
-        ReleaseDC(hwnd, hdc);
 
-        // Text box
-        hTextBox = CreateWindowExW(
-            0, L"EDIT", L"",
-            WS_CHILD | WS_VISIBLE | WS_BORDER | ES_LEFT,
-            50, 320, 300, 25,
-            hwnd,
-            (HMENU)101, // ID unique
-            (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE),
-            NULL
-        );
 
-        // Bouton "Créer"
-        hButton = CreateWindowExW(
-            0, L"BUTTON", L"Créer",
-            WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
-            370, 320, 100, 25,
-            hwnd,
-            (HMENU)102, // ID unique
-            (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE),
-            NULL
-        );
+        if (!hBitmap)
+            MessageBox(hwnd, _T("Impossible de charger raclette.bmp"), _T("img de mrd"), MB_OK);
 
-        // Bouton "Quitter"
-        CreateWindowExW(
-            0, L"BUTTON", L"Quitter",
-            WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
-            480, 320, 100, 25,
-            hwnd,
-            (HMENU)103, // ID unique
-            (HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE),
-            NULL
-        );
-
-        // Menu principal
-        Mebar = CreateMenu();
-        MeFile = CreateMenu();
-        MeHelp = CreateMenu();
-
-        AppendMenuW(MeFile, MF_STRING, 201, L"Option 1");
-        AppendMenuW(MeHelp, MF_STRING, 202, L"A propos");
-        AppendMenuW(MeHelp, MF_STRING, 203, L"Fond");
-
-        AppendMenuW(Mebar, MF_POPUP, (UINT_PTR)MeFile, L"Fichier");
-        AppendMenuW(Mebar, MF_POPUP, (UINT_PTR)MeHelp, L"Aide");
-
-        SetMenu(hwnd, Mebar);
-
-        break;
-    }
 
 
     case WM_SIZE:
