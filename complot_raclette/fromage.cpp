@@ -1,4 +1,4 @@
-﻿#include "complot_raclette.h"
+#include "complot_raclette.h"
 
 
 using namespace std;
@@ -16,10 +16,10 @@ HMENU MeHelp;
 
 // Chemins des images
 const wchar_t* imgRaclette = L"C:/Users/cdidier/source/repos/complot_raclette/complot_raclette/asset/raclette.bmp";
-const wchar_t* imgPizza = L"C:/Users/cdidier/source/repos/complot_raclette/complot_raclette/asset/imaget.bmp";
-const wchar_t* imgBurger = L"C:/Users/cdidier/source/repos/complot_raclette/complot_raclette/asset/burger.bmp";
+const wchar_t* imgfromager = L"C:/Users/cdidier/source/repos/complot_raclette/complot_raclette/asset/fromage.bmp";
+const wchar_t* imgfondue = L"C:/Users/cdidier/source/repos/complot_raclette/complot_raclette/asset/fondue.bmp";
 wchar_t currentImage[512] = L""; // image courante
-wchar_t hiddenImage[512] = L"C:/Users/cdidier/source/repos/complot_raclette/complot_raclette/asset/imaget.bmp";
+wchar_t hiddenImage[512] = L"C:/Users/cdidier/source/repos/complot_raclette/complot_raclette/asset/BP.bmp";
 
 // --- Stéganographie LSB ---
 vector<bool> textToBits(const string& text) {
@@ -113,7 +113,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     case WM_CREATE:
         // Charger image initiale
         if (!loadImage(imgRaclette))
-            MessageBox(hwnd, _T("Impossible de charger raclette.bmp"), _T("Erreur"), MB_OK);
+            MessageBox(hwnd, _T("Impossible de charger l'img"), _T("prbl"), MB_OK);
 
         // Champ texte
         hEdit = CreateWindowEx(0, _T("EDIT"), _T(""),
@@ -121,7 +121,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             20, 20, 250, 30, hwnd, NULL, ((LPCREATESTRUCT)lParam)->hInstance, NULL);
 
         // Boutons
-        CreateWindowEx(0, _T("BUTTON"), _T("Creer"),
+        CreateWindowEx(0, _T("BUTTON"), _T("encoder"),
             WS_CHILD | WS_VISIBLE,
             20, 70, 100, 30, hwnd, (HMENU)1, ((LPCREATESTRUCT)lParam)->hInstance, NULL);
 
@@ -137,15 +137,15 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         Mebar = CreateMenu();
         MeHelp = CreateMenu();
         AppendMenu(MeHelp, MF_STRING, 101, _T("Raclette"));
-        AppendMenu(MeHelp, MF_STRING, 102, _T("Pizza"));
-        AppendMenu(MeHelp, MF_STRING, 103, _T("Burger"));
-        AppendMenu(Mebar, MF_POPUP, (UINT_PTR)MeHelp, _T("Images"));
+        AppendMenu(MeHelp, MF_STRING, 102, _T("fromager"));
+        AppendMenu(MeHelp, MF_STRING, 103, _T("fondue"));
+        AppendMenu(Mebar, MF_POPUP, (UINT_PTR)MeHelp, _T("autr"));
         SetMenu(hwnd, Mebar);
         break;
 
     case WM_COMMAND:
         switch (LOWORD(wParam)) {
-        case 1: // Bouton Creer
+        case 1: // Bouton Cree
         {
             TCHAR buffer[256];
             GetWindowText(hEdit, buffer, 256);
@@ -156,24 +156,25 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             if (hideTextInBMP(currentImage, message, hiddenImage)) {
                 loadImage(hiddenImage);
                 InvalidateRect(hwnd, NULL, TRUE);
-                MessageBox(hwnd, _T("Texte cache dans l'image !"), _T("Succes"), MB_OK);
+                MessageBox(hwnd, _T("Txt hide dans l'img !"), _T("sus"), MB_OK);
             }
             else {
-                MessageBox(hwnd, _T("Erreur lors du masquage du texte"), _T("Erreur"), MB_OK);
+                MessageBox(hwnd, _T("bug de masquage du texte"), _T("non"), MB_OK);
             }
             break;
         }
 
-        case 2: // Bouton Quitter
+        case 2: // Bouton leav
             PostQuitMessage(0);
             break;
 
-        case 4: // Bouton Extraire
+        case 4: // Bouton Extra
         {
             string message = revealTextFromBMP(hiddenImage);
             wchar_t wmsg[256];
             MultiByteToWideChar(CP_ACP, 0, message.c_str(), -1, wmsg, 256);
-            MessageBox(hwnd, wmsg, _T("Message extrait"), MB_OK);
+            MessageBox(hwnd, wmsg, _T("Msg rec"), MB_OK);
+            
             break;
         }
 
@@ -182,13 +183,13 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
             InvalidateRect(hwnd, NULL, TRUE);
             break;
 
-        case 102: // Menu Pizza
-            loadImage(imgPizza);
+        case 102: // Menu fromager
+            loadImage(imgfromager);
             InvalidateRect(hwnd, NULL, TRUE);
             break;
 
-        case 103: // Menu Burger
-            loadImage(imgBurger);
+        case 103: // Menu fondue
+            loadImage(imgfondue);
             InvalidateRect(hwnd, NULL, TRUE);
             break;
         }
@@ -208,6 +209,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         }
         EndPaint(hwnd, &ps);
         return 0;
+        break;
     }
 
     case WM_DESTROY:
@@ -221,14 +223,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     return 0;
 }
 
-// --- Point d'entree ---
+// --- Point d'entry ---
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
     LPSTR lpCmdLine, int nCmdShow) {
 
     WNDCLASS wc = { 0 };
     wc.lpfnWndProc = WndProc;
     wc.hInstance = hInstance;
-    wc.lpszClassName = _T("MaFenetre");
+    wc.lpszClassName = _T("stegosaure");
     wc.hCursor = LoadCursor(NULL, IDC_ARROW);
     wc.hbrBackground = CreateSolidBrush(RGB(79, 34, 6));
 
